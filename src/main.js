@@ -1,10 +1,7 @@
 import '../style.css';
 import { inject } from '@vercel/analytics';
-import { FaceMesh } from '@mediapipe/face_mesh';
 
 inject();
-import { drawConnectors } from '@mediapipe/drawing_utils';
-import { FACEMESH_TESSELATION } from '@mediapipe/face_mesh';
 import { 
     calculateCanthalTilt, calculateFwhr, calculateMidfaceRatio, 
     calculateFacialSymmetry, calculateGoldenRatio, assessPhotoQuality, 
@@ -39,7 +36,7 @@ function onResults(results) {
         const landmarks = results.multiFaceLandmarks[0];
 
         // Draw basic tesselation via mediapipe utility
-        drawConnectors(canvasCtx, landmarks, FACEMESH_TESSELATION, { color: '#C0C0C070', lineWidth: 1 });
+        window.drawConnectors(canvasCtx, landmarks, window.FACEMESH_TESSELATION, { color: '#C0C0C070', lineWidth: 1 });
 
         // Draw custom geometric overlay lines manually just like the python logic
         drawVisualGuides(canvasCtx, landmarks, w, h);
@@ -101,7 +98,7 @@ function drawVisualGuides(ctx, landmarks, w, h) {
 }
 
 // MediaPipe FaceMesh Initialization
-const faceMesh = new FaceMesh({locateFile: (file) => {
+const faceMesh = new window.FaceMesh({locateFile: (file) => {
     return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`;
 }});
 
@@ -135,7 +132,7 @@ navigator.mediaDevices.getUserMedia({ video: true })
         };
     })
     .catch((err) => {
-        document.getElementById('metrics-container').innerHTML = '<div class="loading" style="color:red; margin-top: 40px;">Error: Camera access blocked. Please allow permissions in your browser.</div>';
+        document.getElementById('metrics-container').innerHTML = `<div class="loading" style="color:red; margin-top: 40px;">Error: Camera access blocked. ${err.message}</div>`;
         console.error("Camera error:", err);
     });
 
