@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHUD JS | Advanced Facial Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="video-container">
+        <!-- Live Video feed -->
+        <video id="webcam-video" autoplay playsinline muted></video>
+        <!-- Canvas for drawing wires and geometric lines -->
+        <canvas id="output-canvas"></canvas>
+        <div class="scan-overlay" id="scan-overlay">
+            <div class="scan-line"></div>
+            <div class="scan-text">ANALYZING...</div>
+        </div>
+    </div>
+    
+    <div class="sidebar">
+        <div class="header">
+            <h1>CHUD JS</h1>
+            <div class="status-indicator">
+                <span class="dot" id="live-dot"></span> <span id="live-text">LIVE</span>
+            </div>
+        </div>
+        <div class="metrics-container" id="metrics-container">
+            <div class="loading">Waiting for camera...</div>
+        </div>
+        <div class="controls">
+            <button id="scan-btn">START 10s SCAN</button>
+            <div id="quality-msg" class="quality-msg">Position face in center</div>
+        </div>
+    </div>
+    
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
