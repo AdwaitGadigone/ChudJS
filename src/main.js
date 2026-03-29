@@ -1,5 +1,8 @@
 import '../style.css';
+import { inject } from '@vercel/analytics';
 import { FaceMesh } from '@mediapipe/face_mesh';
+
+inject();
 import { drawConnectors } from '@mediapipe/drawing_utils';
 import { FACEMESH_TESSELATION } from '@mediapipe/face_mesh';
 import { 
@@ -123,7 +126,7 @@ async function processVideo() {
     requestAnimationFrame(processVideo);
 }
 
-navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, facingMode: "user" } })
+navigator.mediaDevices.getUserMedia({ video: true })
     .then((stream) => {
         videoElement.srcObject = stream;
         videoElement.onloadedmetadata = () => {
