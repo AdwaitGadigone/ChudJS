@@ -1,6 +1,5 @@
 import '../style.css';
 import { FaceMesh } from '@mediapipe/face_mesh';
-import { Camera } from '@mediapipe/camera_utils';
 import { drawConnectors } from '@mediapipe/drawing_utils';
 import { FACEMESH_TESSELATION } from '@mediapipe/face_mesh';
 import { 
@@ -112,16 +111,30 @@ faceMesh.setOptions({
 
 faceMesh.onResults(onResults);
 
-const camera = new Camera(videoElement, {
-    onFrame: async () => {
-        await faceMesh.send({ image: videoElement });
-    },
-    width: 640,
-    height: 480
-});
-camera.start().catch(err => {
-    document.getElementById('metrics-container').innerHTML = '<div class="loading" style="color:red;">Error starting webcam. Allow permissions.</div>';
-});
+// Native Webcam Capture Loop (Much more reliable than camera_utils)
+let lastVideoTime = -1;
+async function processVideo() {
+    if (videoElement.readyState >= 2) {
+        if (videoElement.currentTime !== lastVideoTime) {
+            lastVideoTime = videoElement.currentTime;
+            await faceMesh.send({ image: videoElement });
+        }
+    }
+    requestAnimationFrame(processVideo);
+}
+
+navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720, facingMode: "user" } })
+    .then((stream) => {
+        videoElement.srcObject = stream;
+        videoElement.onloadedmetadata = () => {
+            videoElement.play();
+            requestAnimationFrame(processVideo);
+        };
+    })
+    .catch((err) => {
+        document.getElementById('metrics-container').innerHTML = '<div class="loading" style="color:red; margin-top: 40px;">Error: Camera access blocked. Please allow permissions in your browser.</div>';
+        console.error("Camera error:", err);
+    });
 
 // UI Logic
 function getMedian(arr) {
