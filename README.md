@@ -47,7 +47,7 @@ CHUD JS utilizes **MediaPipe Face Mesh** to map 468 distinct facial landmarks in
 
 ### Prerequisites
 
-* Python 3.10 or higher
+* Node.js (v18.0.0 or higher)
 * A working webcam
 
 ### Quick Start
@@ -60,24 +60,9 @@ cd chud-js
 ```
 
 
-2. **Create a virtual environment**
-It is highly recommended to use a clean environment to avoid conflicts.
+2. **Install dependencies**
 ```bash
-# MacOS / Linux
-python3 -m venv .venv
-source .venv/bin/activate
-
-# Windows
-python -m venv .venv
-.venv\Scripts\activate
-
-```
-
-
-3. **Install dependencies**
-```bash
-pip install -r requirements.txt
-
+npm install
 ```
 
 
@@ -86,16 +71,15 @@ pip install -r requirements.txt
 
 ## 🚀 Usage
 
-1. **Start the Server**
+1. **Start the Development Server**
 ```bash
-python app.py
-
+npm run dev
 ```
 
 
 2. **Access the Dashboard**
 Open your browser and navigate to:
-**[http://127.0.0.1:5000](http://127.0.0.1:5000)**
+**[http://localhost:5173](http://localhost:5173)**
 3. **Run an Analysis**
 * Grant camera permissions when prompted.
 * Position your face in the center until the status indicator turns **Green** (Excellent Conditions).
@@ -121,15 +105,13 @@ Open your browser and navigate to:
 
 ## 🔧 Troubleshooting
 
-**"Port 5000 is in use"**
+**"Port 5173 is in use"**
 
-* **MacOS Users:** This is common on macOS Monterey and later. The "AirPlay Receiver" feature uses port 5000 by default.
-* **Fix:** Go to `System Settings` -> `General` -> `AirDrop & Handoff` and untick **"AirPlay Receiver"**. Alternatively, edit `app.py` to run on a different port (e.g., `port=5001`).
+* Vite will automatically try the next available port (e.g., 5174). Look at your terminal output to find the correct local URL.
 
-**"ModuleNotFoundError: No module named 'cv2'"**
+**"Node.js version not supported"**
 
-* Ensure you have activated your virtual environment before running the app.
-* Run `pip install opencv-python-headless` if the standard install fails.
+* Ensure you are using Node.js v18 or later. Use `node -v` to check your version.
 
 ---
 
