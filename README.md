@@ -1,8 +1,8 @@
-# 🗿 CHUD.AI - Facial Analysis Engine
-## *Find Your Wabi Sabi* 😉
+# 🗿 CHUS JS - Facial Analysis Engine
+## *Remastered in JavaScript for 0 lag and more accurate realtime results.*
 **Advanced AI-powered facial geometry analysis with a modern Web Interface.**
 
-CHUD.AI utilizes **MediaPipe Face Mesh** to map 468 distinct facial landmarks in real-time. It calculates complex geometric ratios—such as Canthal Tilt, FWHR, and Midface compactness—to provide an objective analysis of facial aesthetics directly in your browser.
+CHUS JS utilizes **MediaPipe Face Mesh** to map 468 distinct facial landmarks in real-time. It calculates complex geometric ratios—such as Canthal Tilt, FWHR, and Midface compactness—to provide an objective analysis of facial aesthetics directly in your browser at [chudjs.vercel.app](https://chudjs.vercel.app).
 
 > **Note:** This tool is for educational and entertainment purposes only.
 ---
@@ -35,7 +35,7 @@ CHUD.AI utilizes **MediaPipe Face Mesh** to map 468 distinct facial landmarks in
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=Jv91GEhY3nk">
-    <img src="https://img.youtube.com/vi/Jv91GEhY3nk/0.jpg" alt="CHUD.AI Facial Analysis Demo" width="100%">
+    <img src="https://img.youtube.com/vi/Jv91GEhY3nk/0.jpg" alt="CHUS JS Facial Analysis Demo" width="100%">
   </a>
   <br>
   <em>Click to watch the real-time neural mapping and aesthetic ratio analysis.</em>
@@ -54,8 +54,8 @@ CHUD.AI utilizes **MediaPipe Face Mesh** to map 468 distinct facial landmarks in
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/JaydenChan2/chud-ai.git
-cd chud-ai
+git clone https://github.com/JaydenChan2/chus-js.git
+cd chus-js
 
 ```
 
