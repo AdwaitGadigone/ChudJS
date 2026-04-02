@@ -274,39 +274,3 @@ button.active {
     margin-top: 40px;
     font-style: italic;
 }
-
-.about-section {
-    margin-top: 40px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.about-section h3 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem;
-    color: var(--accent-good);
-    margin-bottom: 12px;
-    letter-spacing: 0.1em;
-}
-
-.about-section p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    margin-bottom: 12px;
-}
-
-.about-section a {
-    display: block;
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 600;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-}
-
-.about-section a:hover {
-    opacity: 1;
-    color: var(--accent-good);
-}
